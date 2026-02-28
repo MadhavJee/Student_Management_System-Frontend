@@ -1,0 +1,98 @@
+.grades-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-base);
+    margin-bottom: var(--spacing-xl);
+    align-items: flex-end;
+}
+
+.grades-controls .form-group {
+    flex: 1;
+    min-width: 180px;
+}
+
+.report-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-top: var(--spacing-xl);
+}
+
+.report-card-header {
+    padding: var(--spacing-xl);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.report-card-name {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+}
+
+.report-card-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.report-card-table th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--color-bg-tertiary);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.report-card-table td {
+    padding: 0.75rem 1rem;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.report-card-table tbody tr:hover {
+    background: var(--color-surface-hover);
+}
+
+.grade-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+}
+
+.grade-A {
+    background: var(--color-success-alpha);
+    color: var(--color-success);
+}
+
+.grade-B {
+    background: var(--color-info-alpha);
+    color: var(--color-info);
+}
+
+.grade-C {
+    background: var(--color-warning-alpha);
+    color: var(--color-warning);
+}
+
+.grade-D {
+    background: var(--color-danger-alpha);
+    color: var(--color-danger-light);
+}
+
+.grade-F {
+    background: var(--color-danger-alpha);
+    color: var(--color-danger);
+}

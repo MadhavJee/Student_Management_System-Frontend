@@ -1,0 +1,151 @@
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+}
+
+.dashboard-section {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.dashboard-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.dashboard-section-title {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+}
+
+.dashboard-section-body {
+    padding: var(--spacing-lg);
+}
+
+/* Recent Students mini-table */
+.dashboard-mini-table {
+    width: 100%;
+}
+
+.dashboard-mini-table td {
+    padding: 0.625rem 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.dashboard-mini-table tr:last-child td {
+    border-bottom: none;
+}
+
+.dashboard-student-name {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+}
+
+.dashboard-student-meta {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+}
+
+/* Grade Distribution Bars */
+.grade-bars {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.grade-bar-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-base);
+}
+
+.grade-bar-label {
+    width: 28px;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    text-align: center;
+}
+
+.grade-bar-track {
+    flex: 1;
+    height: 24px;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.grade-bar-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: width 0.6s ease;
+    min-width: 2px;
+}
+
+.grade-bar-count {
+    width: 32px;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+    text-align: right;
+}
+
+/* Attendance Ring */
+.attendance-summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2xl);
+    padding: var(--spacing-lg) 0;
+}
+
+.attendance-stat {
+    text-align: center;
+}
+
+.attendance-stat-value {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+}
+
+.attendance-stat-value.present {
+    color: var(--color-success);
+}
+
+.attendance-stat-value.absent {
+    color: var(--color-danger);
+}
+
+.attendance-stat-value.late {
+    color: var(--color-warning);
+}
+
+.attendance-stat-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin-top: var(--spacing-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 900px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}

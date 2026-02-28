@@ -1,0 +1,116 @@
+.stats-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.stats-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.stats-card-purple::before {
+    background: var(--color-primary);
+}
+
+.stats-card-teal::before {
+    background: var(--color-secondary);
+}
+
+.stats-card-pink::before {
+    background: var(--color-accent);
+}
+
+.stats-card-green::before {
+    background: var(--color-success);
+}
+
+.stats-card-orange::before {
+    background: var(--color-warning);
+}
+
+.stats-card-blue::before {
+    background: var(--color-info);
+}
+
+.stats-card:hover {
+    border-color: var(--color-border-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.stats-card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stats-card-purple .stats-card-icon {
+    background: var(--color-primary-alpha);
+    color: var(--color-primary-light);
+}
+
+.stats-card-teal .stats-card-icon {
+    background: rgba(0, 206, 201, 0.15);
+    color: var(--color-secondary-light);
+}
+
+.stats-card-pink .stats-card-icon {
+    background: rgba(253, 121, 168, 0.15);
+    color: var(--color-accent-light);
+}
+
+.stats-card-green .stats-card-icon {
+    background: var(--color-success-alpha);
+    color: var(--color-success-light);
+}
+
+.stats-card-orange .stats-card-icon {
+    background: var(--color-warning-alpha);
+    color: var(--color-warning);
+}
+
+.stats-card-blue .stats-card-icon {
+    background: var(--color-info-alpha);
+    color: var(--color-info);
+}
+
+.stats-card-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.stats-card-value {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-tight);
+}
+
+.stats-card-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-top: var(--spacing-xs);
+}
+
+.stats-card-sub {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin-top: var(--spacing-xs);
+}

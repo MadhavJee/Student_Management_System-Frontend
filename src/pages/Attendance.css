@@ -1,0 +1,94 @@
+.attendance-page-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-base);
+    margin-bottom: var(--spacing-xl);
+}
+
+.attendance-page-controls .form-group {
+    flex: 1;
+    min-width: 180px;
+}
+
+.attendance-table-wrapper {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.attendance-table th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--color-bg-tertiary);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.attendance-table td {
+    padding: 0.625rem 1rem;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.attendance-table tbody tr:hover {
+    background: var(--color-surface-hover);
+}
+
+.attendance-status-group {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.attendance-status-btn {
+    padding: 0.25rem 0.75rem;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    background: transparent;
+}
+
+.attendance-status-btn.selected-present {
+    background: var(--color-success-alpha);
+    color: var(--color-success);
+    border-color: var(--color-success);
+}
+
+.attendance-status-btn.selected-absent {
+    background: var(--color-danger-alpha);
+    color: var(--color-danger);
+    border-color: var(--color-danger);
+}
+
+.attendance-status-btn.selected-late {
+    background: var(--color-warning-alpha);
+    color: var(--color-warning);
+    border-color: var(--color-warning);
+}
+
+.attendance-submit-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-top: 1px solid var(--color-border);
+}
+
+.attendance-submit-info {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+}
