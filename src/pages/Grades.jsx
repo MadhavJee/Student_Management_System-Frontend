@@ -46,9 +46,12 @@ export default function Grades() {
                     courseService.getAll(),
                     studentService.getAll({ limit: 200 }),
                 ]);
-                setCourses(courseRes.data || []);
-                setStudents(studentRes.data?.students || []);
-            } catch {
+                const coursesData = Array.isArray(courseRes) ? courseRes : Array.isArray(courseRes?.data) ? courseRes.data : [];
+                const studentsData = Array.isArray(studentRes) ? studentRes : Array.isArray(studentRes?.data?.students) ? studentRes.data.students : Array.isArray(studentRes?.data) ? studentRes.data : [];
+                setCourses(coursesData);
+                setStudents(studentsData);
+            } catch (err) {
+                console.error('Grades data fetch error:', err);
                 toast.error('Failed to load data');
             } finally {
                 setInitialLoading(false);
@@ -66,8 +69,10 @@ export default function Grades() {
             setLoading(true);
             try {
                 const res = await gradeService.getStudentGrades(selectedStudent);
-                setGrades(res.data || []);
-            } catch {
+                const gradesData = Array.isArray(res) ? res : Array.isArray(res?.data) ? res.data : [];
+                setGrades(gradesData);
+            } catch (err) {
+                console.error('Grades fetch error:', err);
                 toast.error('Failed to load grades');
             } finally {
                 setLoading(false);

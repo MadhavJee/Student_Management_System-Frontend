@@ -23,9 +23,12 @@ export default function Attendance() {
                     courseService.getAll(),
                     studentService.getAll({ limit: 200 }),
                 ]);
-                setCourses(courseRes.data || []);
-                setAllStudents(studentRes.data?.students || []);
-            } catch {
+                const coursesData = Array.isArray(courseRes) ? courseRes : Array.isArray(courseRes?.data) ? courseRes.data : [];
+                const studentsData = Array.isArray(studentRes) ? studentRes : Array.isArray(studentRes?.data?.students) ? studentRes.data.students : Array.isArray(studentRes?.data) ? studentRes.data : [];
+                setCourses(coursesData);
+                setAllStudents(studentsData);
+            } catch (err) {
+                console.error('Attendance data fetch error:', err);
                 toast.error('Failed to load data');
             } finally {
                 setLoading(false);

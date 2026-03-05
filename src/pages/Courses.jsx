@@ -33,8 +33,10 @@ export default function Courses() {
         setLoading(true);
         try {
             const res = await courseService.getAll();
-            setCourses(res.data || []);
-        } catch {
+            const coursesData = Array.isArray(res) ? res : Array.isArray(res?.data) ? res.data : [];
+            setCourses(coursesData);
+        } catch (err) {
+            console.error('Courses fetch error:', err);
             toast.error('Failed to load courses');
         } finally {
             setLoading(false);
@@ -100,8 +102,10 @@ export default function Courses() {
         setSelectedStudentId('');
         try {
             const res = await studentService.getAll({ limit: 200 });
-            setAllStudents(res.data.students || []);
-        } catch {
+            const studentsData = Array.isArray(res) ? res : Array.isArray(res?.data?.students) ? res.data.students : Array.isArray(res?.data) ? res.data : [];
+            setAllStudents(studentsData);
+        } catch (err) {
+            console.error('Students fetch error:', err);
             toast.error('Failed to load students');
         }
         setEnrollModalOpen(true);
