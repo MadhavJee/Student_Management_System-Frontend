@@ -33,7 +33,16 @@ export default function Courses() {
         setLoading(true);
         try {
             const res = await courseService.getAll();
-            const coursesData = Array.isArray(res) ? res : Array.isArray(res?.data) ? res.data : [];
+            console.log('Courses API response:', res);
+            const coursesData = Array.isArray(res)
+                ? res
+                : Array.isArray(res?.courses)
+                    ? res.courses
+                    : Array.isArray(res?.data?.courses)
+                        ? res.data.courses
+                        : Array.isArray(res?.data)
+                            ? res.data
+                            : [];
             setCourses(coursesData);
         } catch (err) {
             console.error('Courses fetch error:', err);
