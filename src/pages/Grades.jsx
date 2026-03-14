@@ -46,8 +46,24 @@ export default function Grades() {
                     courseService.getAll(),
                     studentService.getAll({ limit: 200 }),
                 ]);
-                const coursesData = Array.isArray(courseRes) ? courseRes : Array.isArray(courseRes?.data) ? courseRes.data : [];
-                const studentsData = Array.isArray(studentRes) ? studentRes : Array.isArray(studentRes?.data?.students) ? studentRes.data.students : Array.isArray(studentRes?.data) ? studentRes.data : [];
+                const coursesData = Array.isArray(courseRes)
+                    ? courseRes
+                    : Array.isArray(courseRes?.courses)
+                        ? courseRes.courses
+                        : Array.isArray(courseRes?.data?.courses)
+                            ? courseRes.data.courses
+                            : Array.isArray(courseRes?.data)
+                                ? courseRes.data
+                                : [];
+                const studentsData = Array.isArray(studentRes)
+                    ? studentRes
+                    : Array.isArray(studentRes?.students)
+                        ? studentRes.students
+                        : Array.isArray(studentRes?.data?.students)
+                            ? studentRes.data.students
+                            : Array.isArray(studentRes?.data)
+                                ? studentRes.data
+                                : [];
                 setCourses(coursesData);
                 setStudents(studentsData);
             } catch (err) {
@@ -69,7 +85,15 @@ export default function Grades() {
             setLoading(true);
             try {
                 const res = await gradeService.getStudentGrades(selectedStudent);
-                const gradesData = Array.isArray(res) ? res : Array.isArray(res?.data) ? res.data : [];
+                const gradesData = Array.isArray(res)
+                    ? res
+                    : Array.isArray(res?.grades)
+                        ? res.grades
+                        : Array.isArray(res?.data?.grades)
+                            ? res.data.grades
+                            : Array.isArray(res?.data)
+                                ? res.data
+                                : [];
                 setGrades(gradesData);
             } catch (err) {
                 console.error('Grades fetch error:', err);
@@ -129,7 +153,8 @@ export default function Grades() {
             // Refresh
             if (selectedStudent) {
                 const res = await gradeService.getStudentGrades(selectedStudent);
-                setGrades(res.data || []);
+                const gData = Array.isArray(res) ? res : Array.isArray(res?.grades) ? res.grades : Array.isArray(res?.data) ? res.data : [];
+                setGrades(gData);
             }
         } catch (err) {
             toast.error(err.response?.data?.message || 'Operation failed');
@@ -145,7 +170,8 @@ export default function Grades() {
             toast.success('Grade deleted');
             if (selectedStudent) {
                 const res = await gradeService.getStudentGrades(selectedStudent);
-                setGrades(res.data || []);
+                const gData = Array.isArray(res) ? res : Array.isArray(res?.grades) ? res.grades : Array.isArray(res?.data) ? res.data : [];
+                setGrades(gData);
             }
         } catch (err) {
             toast.error(err.response?.data?.message || 'Delete failed');

@@ -23,8 +23,24 @@ export default function Attendance() {
                     courseService.getAll(),
                     studentService.getAll({ limit: 200 }),
                 ]);
-                const coursesData = Array.isArray(courseRes) ? courseRes : Array.isArray(courseRes?.data) ? courseRes.data : [];
-                const studentsData = Array.isArray(studentRes) ? studentRes : Array.isArray(studentRes?.data?.students) ? studentRes.data.students : Array.isArray(studentRes?.data) ? studentRes.data : [];
+                const coursesData = Array.isArray(courseRes)
+                    ? courseRes
+                    : Array.isArray(courseRes?.courses)
+                        ? courseRes.courses
+                        : Array.isArray(courseRes?.data?.courses)
+                            ? courseRes.data.courses
+                            : Array.isArray(courseRes?.data)
+                                ? courseRes.data
+                                : [];
+                const studentsData = Array.isArray(studentRes)
+                    ? studentRes
+                    : Array.isArray(studentRes?.students)
+                        ? studentRes.students
+                        : Array.isArray(studentRes?.data?.students)
+                            ? studentRes.data.students
+                            : Array.isArray(studentRes?.data)
+                                ? studentRes.data
+                                : [];
                 setCourses(coursesData);
                 setAllStudents(studentsData);
             } catch (err) {
